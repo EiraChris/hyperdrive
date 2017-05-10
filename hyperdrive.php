@@ -41,7 +41,10 @@ if ( !defined('ABSPATH') ) { exit(); }
 // Basic configuration
 define('HYPERDRIVE_VERSION', '1.0.0-beta.3');
 
-add_action('wp_head', __NAMESPACE__ .'\engage');
+// Hook into the frontend wp_print_scripts.
+if ( !is_admin() ) {
+  add_action('wp_print_scripts', __NAMESPACE__ . '\engage');
+}
 
 /**
  * Prepare structured data for Fetch Injection.
