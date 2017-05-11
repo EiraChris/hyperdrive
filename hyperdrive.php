@@ -115,8 +115,11 @@ function generate_antimatter( $calibration_data, $recursing = false ) {
   foreach ( $calibration_data as $idx => $data ) {
     $handle = $data[0];
     $url = $data[1];
-    $particle_array[] = "{$url}";
     $subparticles = $data[2];
+
+    // Assign URL to particle array.
+    $particle_array[] = "{$url}";
+
     if ( $subparticles ) {
       $particle_array[] = generate_antimatter( $subparticles, true );
     }
@@ -328,3 +331,23 @@ function in_multi_array($needle, $haystack) {
   }
   return false;
 }
+
+/**
+ * Set jquery-core as a dependency of jquery-migrate
+ * to ensure correct script execution order.
+ *
+ * @since Hyperdrive 1.0.0-beta.3
+ * @param object $wp_scripts WP_Scripts object.
+ */
+function sort_jquery_dependencies($wp_scripts) {
+  if ( !is_admin() && !empty($wp_scripts->registered['jquery']) ) {
+    $dependencies = $wp_scripts->registered['jquery']->deps;
+
+    // Drop jquery-core as a dependency of jquery.
+    $wp_scripts->registered['jquery']->deps = array_diff($dependencies, array('jquery-core'));
+
+    // Add jquery-core as a dependency of jquery-migrate.
+    $wp_scripts->registered['jquery-migrate']->deps = array('jquery-core');
+  }
+}
+add_action('wp_default_scripts', __NAMESPACE__ . '\sort_jquery_dependencies');
