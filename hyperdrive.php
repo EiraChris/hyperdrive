@@ -165,17 +165,11 @@ function fold_spacetime( $antimatter_particles ) {
 
   // assemble Fetch Inject string using ordered array
   $first_element = reset($injectors);
-  $last_element = end($injectors);
   foreach ($injectors as $idx => $injector) {
     if ( $injector === $first_element ) {
       $fetch_inject_string = "fetchInject($injector)";
-    } else if ( $injector === $last_element ) {
-      $fetch_inject_string = "fetchInject($injector, $fetch_inject_string)";
     } else {
-      $array_with_empty_string = array(''); // like WordPress core jquery handle
-      if ( !(json_decode($injector) === $array_with_empty_string) ) {
-        $fetch_inject_string = "fetchInject($injector, $fetch_inject_string)";
-      }
+      $fetch_inject_string = "fetchInject($injector, $fetch_inject_string)";
     }
   }
 
