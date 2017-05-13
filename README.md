@@ -11,17 +11,17 @@ http://hyperdrive.habd.as/
 
 # Todo before 1.0.0 release
 
-- [ ] Only dequeue scripts if [browser supports Fetch](http://caniuse.com/#search=fetch) for backwards compatibility with older browsers
+- [ ] Only dequeue scripts if [browser supports Fetch](http://caniuse.com/#search=fetch) for backwards compatibility with older browsers.
 - [ ] Integrate localization behaviors [as shown here](https://gist.github.com/jhabdas/64e8380010e43a526fb9c9ee511fad17#file-functions-php-L507).
-- [ ] Test with a few different themes and open bugs and needed
+- [ ] Test with a few different themes and open bugs as needed.
 
 # Post 1.0.0 roadmap
 
-- [ ] Integrate User Interface created by [@wedangsu](https://github.com/wedangsusu)
+- [ ] Integrate User Interface created by [@wedangsu](https://github.com/wedangsusu).
 - [ ] Ensure interface gives ability to defer script execution for scripts querying the DOM until after the DOM is fully parsed.
 - [ ] Give ability to perform grouping, so non-jQuery scripts can download and execute without waiting for jQuery.
-- [ ] Add ability to load icon fonts and [non-critical CSS](https://gist.github.com/scottjehl/87176715419617ae6994) (also possible with Fetch Inject)
-- [ ] Build API enabling theme authors greater control
+- [ ] Add ability to load icon fonts and [non-critical CSS](https://gist.github.com/scottjehl/87176715419617ae6994) (also possible with Fetch Inject).
+- [ ] Build API enabling theme authors greater control.
 
 # How it works
 
