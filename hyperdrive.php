@@ -12,7 +12,7 @@
  * Plugin URI:  https://github.com/wp-id/hyperdrive
  * Author URI:  https://wp-id.org/
  * Description: The fastest way to load pages in WordPress.
- * Version:     1.0.0-beta
+ * Version:     1.0.0-beta.3
  * Author:      WordCamp 2017 Plugin Team
  * License:     GPL-3.0 or later
  *
@@ -312,7 +312,6 @@ function get_deps_for_handle( $handle ) {
   $dep = get_dep_for_handle( $handle );
   return $dep->deps;
 }
-
 
 /**
  * Checks if a value exists in a multidimensional array.
