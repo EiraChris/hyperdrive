@@ -82,15 +82,18 @@ function calibrate_thrusters() {
   $calibration_data = [];
   $scripts = get_enqueued_scripts();
   foreach ( $scripts as $script ) {
-    if ( empty($script->extra[ 'conditional' ]) ) {
-      // exclude scripts using conditional comments
-      // Internet Explorer will never support fetch
+    $is_conditional = empty($script->extra['conditional']);
+    $in_footer = !empty($script->extra['group']) && $script->extra['group'] === 1;
+
+    // Exclude scripts using conditional comments (Internet Explorer)
+    // and scripts not enqueued in the footer.
+    if ( $is_conditional && $in_footer ) {
       $calibration_data[] = array(
         $script->handle,
         get_src_for_handle( $script->handle ),
         get_dependency_data( $script->deps )
       );
-      // we'll take it from here
+      // Step aside, we'll take it from here.
       wp_dequeue_script( $script->handle );
     }
   }
